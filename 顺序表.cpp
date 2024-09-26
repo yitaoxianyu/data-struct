@@ -84,8 +84,22 @@ void searchLinkList(LinkList &L,int i){
 
 
 
+//第十题
 
+void deleteItem(vector<int> nums,int item){
+	//双指针	
+	int i = 0, j = 0;
+	while(j < (int)nums.size()){
+		if(nums[j] != item){
+			nums[i] = nums[j];
+			i++; 
+		}
+		j++;
+	}
+}
 
+//第八题
+void 
 
 
 
