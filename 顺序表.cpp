@@ -13,13 +13,13 @@ void initSqlist(int len,Sqlist &sqList){
 	sqList.capacity = len;
 }
 
-//ÔÚµÚi¸öÎ»ÖÃ²åÈëÔªËØe
+//ï¿½Úµï¿½iï¿½ï¿½Î»ï¿½Ã²ï¿½ï¿½ï¿½Ôªï¿½ï¿½e
 void insertSqlist(int i,Sqlist &sqList,int e){
 	for(int j = sqList.length - 1;j >= i - 1;j--) sqList.elem[j + 1] = sqList.elem[j];
 	sqList.elem[i - 1] = e;
 	sqList.length++; 
 }
-//É¾³ýµÚi¸öÎ»ÖÃµÄÔªËØ
+//É¾ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½Î»ï¿½Ãµï¿½Ôªï¿½ï¿½
 void deleteSqlist(int i,Sqlist &sqList){
 	for(int j = i;j <= sqList.length - 1;j++) sqList.elem[j - 1] = sqList.elem[j];
 	sqList.length--;
@@ -33,14 +33,14 @@ typedef struct ListNode{
 } ListNode,* LinkList;
 
 
-//³õÊ¼»¯Á´±í
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void initLinkList(LinkList &L){
 	L = new ListNode;
 	L->next = NULL;
 	L->value = 0;	
 }
 
-//²åÈë½Úµã,Í·²å
+//ï¿½ï¿½ï¿½ï¿½Úµï¿½,Í·ï¿½ï¿½
 void insertLinkList_Head(LinkList &L,int len){
 	for(int i = 0;i < len;i ++){
 		LinkList temp = new ListNode;
@@ -53,7 +53,7 @@ void insertLinkList_Head(LinkList &L,int len){
 }
 
 
-//²åÈë½ÚµãÎ²²å
+//ï¿½ï¿½ï¿½ï¿½Úµï¿½Î²ï¿½ï¿½
 void insertLinkList_Tail(LinkList &L,int len){
 	LinkList p = L;	
 	for(int i = 0;i <len;i ++){
@@ -66,28 +66,28 @@ void insertLinkList_Tail(LinkList &L,int len){
 }
 
 
-//²éµ¹ÊýµÚi¸öÊý£¬µ¹ÊýµÚi¸öÊý¾ÍÊÇÕûÊýµÚlen - i + 1¸öÊý
+//ï¿½éµ¹ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½len - i + 1ï¿½ï¿½ï¿½ï¿½
 void searchLinkList(LinkList &L,int i){
-	//Ë«Ö¸Õë
+	//Ë«Ö¸ï¿½ï¿½
 	LinkList first = L;
 	LinkList second = L;
-	//Ê×ÏÈÈÃ¿ìÖ¸Õë×ßi²½
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½
 	for(int j = 1;j <= i;j ++) first = first->next;
 	
-	//ÈÃ¿ìÖ¸Õë×ßµ½×îºóÒ»¸öÖ¸ÕëµÄÏÂÒ»¸ö
+	//ï¿½Ã¿ï¿½Ö¸ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 	while(first){
 		first = first->next;
 		second = second->next;
 	}
-	//´ËÊ±scondÖ¸ÏòµÄ¾ÍÊÇµ¹ÊýµÚi¸ö
+	//ï¿½ï¿½Ê±scondÖ¸ï¿½ï¿½Ä¾ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½
 }
 
 
 
-//µÚÊ®Ìâ
+//ï¿½ï¿½Ê®ï¿½ï¿½
 
 void deleteItem(vector<int> nums,int item){
-	//Ë«Ö¸Õë	
+	//Ë«Ö¸ï¿½ï¿½	
 	int i = 0, j = 0;
 	while(j < (int)nums.size()){
 		if(nums[j] != item){
@@ -98,8 +98,6 @@ void deleteItem(vector<int> nums,int item){
 	}
 }
 
-//µÚ°ËÌâ
-void 
 
 
 
