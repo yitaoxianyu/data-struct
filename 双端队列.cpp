@@ -108,7 +108,67 @@ class LinkedListDequeue{
 		}
 
 };
-
+class ArrayDeque{
+	private:
+		vector<int> nums;
+		int front;
+		int queSize;
+	public:
+		ArrayDeque(int capacity){
+			nums.resize(capacity);
+			front = queSize = 0;
+		}
+		int capacity(){
+			return nums.size();
+		}
+		int size(){
+			return queSize;
+		}
+		bool isEmpty(){
+			return queSize == 0;
+		}
+		int index(int i){
+			return (i + capacity()) % capacity();
+		}
+		void pushFirst(int num){
+			if(queSize == capacity()){
+				cout << "双向队列已满" << endl;
+				return ;
+			}
+			front = index(front - 1);
+			nums[front] = num;
+			queSize++;
+		}
+		
+		void pushLast(int num){
+			if(queSize == capacity()){
+				cout << "双向队列已满" << endl;
+				return ;
+			}
+			int rear = index(front + queSize);
+			nums[rear] = num;
+			queSize++;
+		}
+		int peekFirst(){
+			return nums[front];
+		}
+		int peekLast(){
+			int rear = index(front + queSize - 1);
+			return nums[rear];
+		}
+		int popFirst(){
+			int pop = peekFirst();
+			front = index(front + 1);
+			queSize--;
+			return pop;
+		}
+		int popLast(){
+			int pop = peekLast();
+			queSize--;
+			return pop;
+		}
+		
+};
 
 
 
