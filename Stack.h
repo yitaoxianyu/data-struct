@@ -19,8 +19,8 @@ struct Stack{
 
 void initStack(Stack &stk);
 void pushStack(Stack &stk,ElementType val);
-ElementType popStack(Stack &stk);
-ElementType peekStack(Stack stk);
+int popStack(Stack &stk);
+int peekStack(Stack stk);
 bool isEmptyStack(Stack stk);
 bool isFullStack(Stack stk);
 
