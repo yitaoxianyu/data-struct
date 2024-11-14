@@ -1,7 +1,16 @@
 #include "Tree.h"
+#include "Stack.h"
+#include "Queue.h"
 #include<bits/stdc++.h>
 
 using namespace std;
+
+int main(void){
+    Tree tree = nullptr;
+    createTree(tree);
+    preOrder(tree);
+    return 0;
+}
 
 void createTree(Tree &root){
     char ch; cin >> ch;
@@ -55,14 +64,15 @@ void preOrderNoRecursion(Tree root){
 
 void inOrderNoRecursion(Tree root){
     if(root == nullptr) return ;
-    stack<Tree> stk;
-    while(root != nullptr || !stk.empty()){
+    Stack stk;
+    while(root != nullptr || !isEmptyStack(stk)){
         if(root != nullptr){
-            stk.push(root);
+            pushStack(stk,root);
             root = root->lChild;
         }
         else{
-            root = stk.top();stk.pop();
+            root = peekStack(stk);
+            popStack(stk);
             cout << root->data;
             root = root -> rChild;
         }
@@ -71,13 +81,13 @@ void inOrderNoRecursion(Tree root){
 
 void levelOrder(Tree root){
     if(root == nullptr) return ;
-    queue<Tree> que;
-    que.push(root);
-    while(!que.empty()){
-        Tree temp = que.front(); que.pop();        
+    Queue que; initQueue(que);
+    pushQueue(que,root);
+    while(!isEmptyQueue(que)){
+        Tree temp = getHead(que); popQueue(que);        
         cout << temp->data;
-        if(temp->lChild != nullptr) que.push(temp->lChild);
-        if(temp->rChild != nullptr) que.push(temp->rChild);
+        if(temp->lChild != nullptr) pushQueue(que,temp->lChild);
+        if(temp->rChild != nullptr) pushQueue(que,temp->rChild);
     }
 }
 
@@ -94,9 +104,62 @@ int depth(Tree root){
     return (m > n ? m : n) + 1;
 }
 
-int main(void){
-    Tree tree = nullptr;
-    createTree(tree);
-    preOrder(tree);
-    return 0;
+void initStack(Stack &stk){
+	stk.top = stk.end = -1;
+	stk.elem = new ElementType[MAXSIZE];
 }
+
+bool isEmptyStack(Stack stk){
+	return stk.top == stk.end;
+}
+
+bool isFullStack(Stack stk){
+	return stk.top++ >= MAXSIZE;
+}
+
+void pushStack(Stack &stk,ElementType val){
+	if(isFullStack(stk)) return ;
+	stk.elem[++stk.top] = val;
+}
+
+ElementType peekStack(Stack stk){
+	if(isEmptyStack(stk)) return ERROR;
+	return stk.elem[stk.top];	
+}
+
+ElementType popStack(Stack &stk){
+	if(isEmptyStack(stk)) return ERROR;
+	ElementType val = peekStack(stk);
+	stk.top--;
+	return val;
+}
+
+void initQueue(Queue &queue){
+	queue.rear = queue.front = 0;
+	queue.elem = new ElementType[MAXSIZE];
+}
+
+bool isEmpty(Queue queue){
+	return queue.rear == queue.front;
+}
+
+bool isFull(Queue queue){
+	return (queue.rear + 1) % MAXSIZE == queue.front;
+}
+
+void pushQueue(Queue &queue,ElementType val){
+	queue.elem[queue.rear] = val;
+	queue.rear = (queue.rear + 1) % MAXSIZE ;
+}
+
+ElementType popQueue(Queue &queue){
+    ElementType val = queue.elem[queue.front];
+    queue.front = (queue.front + 1) % MAXSIZE;
+	return val;
+}
+
+ElementType getHead(Queue queue){
+    if(!isEmptyQueue(queue))  return queue.elem[queue.front];
+}
+
+

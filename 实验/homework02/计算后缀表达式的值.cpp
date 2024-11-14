@@ -12,7 +12,7 @@ int main(void) {
             stk.push(str[i] - '0'); 
         } else {
             if (stk.size() < 2) {
-                return 1;
+                return 1;	
             }
 
             int val1 = stk.top(); stk.pop(); 

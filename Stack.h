@@ -5,8 +5,8 @@
 
 using namespace std;
 
+typedef Tree ElementType;
 typedef int status;
-typedef int ElementType;
 
 #define MAXSIZE 100
 #define OK 1
@@ -19,8 +19,8 @@ struct Stack{
 
 void initStack(Stack &stk);
 void pushStack(Stack &stk,ElementType val);
-int popStack(Stack &stk);
-int peekStack(Stack stk);
+ElementType popStack(Stack &stk);
+ElementType peekStack(Stack stk);
 bool isEmptyStack(Stack stk);
 bool isFullStack(Stack stk);
 
