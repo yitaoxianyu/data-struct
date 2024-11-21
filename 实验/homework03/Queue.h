@@ -4,7 +4,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-typedef ElementType;
+typedef  ElementType;
 typedef int Status;
 
 #define MAXSIZE 100
